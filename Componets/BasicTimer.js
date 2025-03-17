@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import styles from "../styles/styles"; // Importar estilos
+import { styles } from "../styles/styles"; // Importar estilos
 
 const BasicTimer = () => {
   const [hours, setHours] = useState("00");
@@ -19,8 +19,22 @@ const BasicTimer = () => {
     }
   };
 
+  // Detener el temporizador
+  const stopTimer = () => {
+    setRunning(false);
+  };
+
+  // Reiniciar el temporizador
+  const resetTimer = () => {
+    setRunning(false);
+    setTimeLeft(null);
+    setHours("00");
+    setMinutes("00");
+    setSeconds("00");
+  };
+
   // Contar el tiempo
-  React.useEffect(() => {
+  useEffect(() => {
     if (timeLeft === 0) {
       setRunning(false);
     } else if (running && timeLeft !== null) {
@@ -41,48 +55,62 @@ const BasicTimer = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Temporizador Básico</Text>
 
-      {/* Encabezado Hr Min Sec */}
-      <View style={styles.labelContainer}>
-        <Text style={styles.label}>Hr</Text>
-        <Text style={styles.label}>Min</Text>
-        <Text style={styles.label}>Sec</Text>
-      </View>
-
-      {/* Campos de entrada */}
-      {!running ? (
-        <View style={styles.inputContainer}>
+      {/* Contenedor en fila para etiquetas y entradas */}
+      <View style={styles.row}>
+        <View style={styles.column}>
+          <Text style={styles.label}>Hr</Text>
           <TextInput
             style={styles.input}
             keyboardType="numeric"
             maxLength={2}
             value={hours}
             onChangeText={setHours}
+            editable={!running}
           />
+        </View>
+        <View style={styles.column}>
+          <Text style={styles.label}>Min</Text>
           <TextInput
             style={styles.input}
             keyboardType="numeric"
             maxLength={2}
             value={minutes}
             onChangeText={setMinutes}
+            editable={!running}
           />
+        </View>
+        <View style={styles.column}>
+          <Text style={styles.label}>Sec</Text>
           <TextInput
             style={styles.input}
             keyboardType="numeric"
             maxLength={2}
             value={seconds}
             onChangeText={setSeconds}
+            editable={!running}
           />
         </View>
-      ) : (
-        <Text style={styles.timerText}>{formatTime()}</Text>
-      )}
+      </View>
 
-      {/* Botón de inicio */}
-      {!running && (
-        <TouchableOpacity style={styles.button} onPress={startTimer}>
-          <Text style={styles.buttonText}>Iniciar</Text>
+      {/* Mostrar tiempo en cuenta regresiva si está corriendo */}
+      {running && <Text style={styles.timerText}>{formatTime()}</Text>}
+
+      {/* Botones */}
+      <View style={styles.buttonContainer}>
+        {!running ? (
+          <TouchableOpacity style={styles.button} onPress={startTimer}>
+            <Text style={styles.buttonText}>Iniciar</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity style={styles.button} onPress={stopTimer}>
+            <Text style={styles.buttonText}>Detener</Text>
+          </TouchableOpacity>
+        )}
+
+        <TouchableOpacity style={styles.button} onPress={resetTimer}>
+          <Text style={styles.buttonText}>Reiniciar</Text>
         </TouchableOpacity>
-      )}
+      </View>
     </View>
   );
 };
