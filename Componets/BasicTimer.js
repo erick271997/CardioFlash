@@ -48,65 +48,51 @@ const BasicTimer = () => {
     const h = String(Math.floor(timeLeft / 3600)).padStart(2, "0");
     const m = String(Math.floor((timeLeft % 3600) / 60)).padStart(2, "0");
     const s = String(timeLeft % 60).padStart(2, "0");
-    return `${h}:${m}:${s}`;
+    return `${h} : ${m} : ${s}`;
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Temporizador Básico</Text>
+      <Text style={styles.title}>Temporizador</Text>
 
-      {/* Contenedor en fila para etiquetas y entradas */}
-      <View style={styles.row}>
-        <View style={styles.column}>
-          <Text style={styles.label}>Hr</Text>
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            maxLength={2}
-            value={hours}
-            onChangeText={setHours}
-            editable={!running}
-          />
-        </View>
-        <View style={styles.column}>
-          <Text style={styles.label}>Min</Text>
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            maxLength={2}
-            value={minutes}
-            onChangeText={setMinutes}
-            editable={!running}
-          />
-        </View>
-        <View style={styles.column}>
-          <Text style={styles.label}>Sec</Text>
-          <TextInput
-            style={styles.input}
-            keyboardType="numeric"
-            maxLength={2}
-            value={seconds}
-            onChangeText={setSeconds}
-            editable={!running}
-          />
-        </View>
+      {/* Contenedor en fila para las entradas de tiempo */}
+      <View style={styles.timerInputContainer}>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          maxLength={2}
+          value={hours}
+          onChangeText={setHours}
+          editable={!running}
+        />
+        <Text style={styles.separator}>:</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          maxLength={2}
+          value={minutes}
+          onChangeText={setMinutes}
+          editable={!running}
+        />
+        <Text style={styles.separator}>:</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          maxLength={2}
+          value={seconds}
+          onChangeText={setSeconds}
+          editable={!running}
+        />
       </View>
 
       {/* Mostrar tiempo en cuenta regresiva si está corriendo */}
       {running && <Text style={styles.timerText}>{formatTime()}</Text>}
 
-      {/* Botones */}
+      {/* Botones en una línea horizontal */}
       <View style={styles.buttonContainer}>
-        {!running ? (
-          <TouchableOpacity style={styles.button} onPress={startTimer}>
-            <Text style={styles.buttonText}>Iniciar</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity style={styles.button} onPress={stopTimer}>
-            <Text style={styles.buttonText}>Detener</Text>
-          </TouchableOpacity>
-        )}
-
+        <TouchableOpacity style={styles.button} onPress={running ? stopTimer : startTimer}>
+          <Text style={styles.buttonText}>{running ? "Pausar" : "Iniciar"}</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={resetTimer}>
           <Text style={styles.buttonText}>Reiniciar</Text>
         </TouchableOpacity>

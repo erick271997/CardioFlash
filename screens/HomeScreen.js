@@ -11,15 +11,15 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.labelText}>Selecciona una opción:</Text>
       
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BasicStopwatch")}>
-        <Text style={styles.buttonText}>Cronómetro Básico</Text>
+        <Text style={styles.buttonText}>Basic Stopwatch</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BasicTimer")}>
-        <Text style={styles.buttonText}>Temporizador Básico</Text>
+        <Text style={styles.buttonText}>Basic Timer</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AdvancedTimer")}>
-        <Text style={styles.buttonText}>Temporizador Avanzado</Text>
+        <Text style={styles.buttonText}>Advanced Timer</Text>
       </TouchableOpacity>
     </View>
     
