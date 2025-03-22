@@ -1,0 +1,88 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  welcomeText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginVertical: 10,
+  },
+  motivationText: {
+    fontSize: 16,
+    textAlign: "center",
+    color: "gray",
+    marginBottom: 20,
+  },
+  header: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  logo: {
+    width: 240,
+    height: 240,
+    resizeMode: "contain",
+    borderRadius: 20,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.6,
+    shadowRadius: 20,
+    elevation: 15,
+    transform: [
+      { perspective: 1000 },
+      { rotateX: "8deg" },
+      { rotateY: "-5deg" },
+      { scale: 1.05 },
+    ],
+  },
+  headerLogo: {
+    width: 220,
+    height: 92,
+    resizeMode: "contain",
+    marginLeft: -75,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    elevation: 12,
+    transform: [
+      { perspective: 800 },
+      { rotateY: "-4deg" },
+      { scale: 1.04 },
+    ],
+  },
+  videoPlaceholder: {
+    width: "100%",
+    height: 200,
+    backgroundColor: "#d3d3d3",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  videoText: {
+    fontSize: 18,
+    color: "#555",
+  },
+  button: {
+    backgroundColor: "#007bff",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginBottom: 10,
+    width: "80%",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+});
