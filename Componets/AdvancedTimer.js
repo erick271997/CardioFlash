@@ -104,7 +104,7 @@ const AdvancedTimer = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.labelText}>🔥 Temporizador HIIT - Ciclo Infinito</Text>
+      <Text style={styles.labelText}>🔥 HIIT Timer - Infinite Cycle 🔥 </Text>
 
       <ScrollView style={{ maxHeight: 300, width: "100%" }}>
         {timers.map((timer, index) => (
@@ -168,7 +168,7 @@ const AdvancedTimer = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={() => setRunning(!running)}>
           <Text style={styles.buttonText}>
-            {running ? "⏹️ Stop" : "▶️ Start"}
+            {running ? " Stop" : "▶ Start"}
           </Text>
         </TouchableOpacity>
       </View>

@@ -9,7 +9,7 @@ const BasicTimer = () => {
   const [timeLeft, setTimeLeft] = useState(null);
   const [running, setRunning] = useState(false);
 
-  // Iniciar el temporizador
+  // ciar el temporizador
   const startTimer = () => {
     const totalSeconds =
       parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds);
@@ -24,7 +24,7 @@ const BasicTimer = () => {
     setRunning(false);
   };
 
-  // Reiniciar el temporizador
+  // Reciar el temporizador
   const resetTimer = () => {
     setRunning(false);
     setTimeLeft(null);
@@ -92,10 +92,10 @@ const BasicTimer = () => {
       {/* Botones */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={running ? stopTimer : startTimer}>
-          <Text style={styles.buttonText}>{running ? "⏸️ Pause" : "▶️ Start"}</Text>
+          <Text style={styles.buttonText}>{running ? " Pause" : " Start"}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={resetTimer}>
-          <Text style={styles.buttonText}>🔄 Reboot</Text>
+          <Text style={styles.buttonText}> Reboot</Text>
         </TouchableOpacity>
       </View>
     </View>

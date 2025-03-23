@@ -46,7 +46,7 @@ const BasicStopwatch = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={() => setCorriendo(!corriendo)}>
-          <Text style={styles.buttonText}>{corriendo ? "Pausar" : "Iniciar"}</Text>
+          <Text style={styles.buttonText}>{corriendo ? "Pause" : "Start"}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}

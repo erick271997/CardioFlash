@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  // Estilos generales
+  // General
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -10,7 +10,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
 
-  // Texto de bienvenida
+  // Pantalla principal
   welcomeText: {
     fontSize: 24,
     fontWeight: "bold",
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
 
-  // Logo en pantalla principal
+  // Logo
   header: {
     width: "100%",
     justifyContent: "center",
@@ -66,21 +66,7 @@ export default StyleSheet.create({
     ],
   },
 
-  // Sección de video
-  videoPlaceholder: {
-    width: "100%",
-    height: 200,
-    backgroundColor: "#d3d3d3",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  videoText: {
-    fontSize: 18,
-    color: "#555",
-  },
-
-  // Botones
+  // Botones generales
   button: {
     backgroundColor: "#007bff",
     padding: 16,
@@ -94,14 +80,37 @@ export default StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  buttonContainer: {
+    flexDirection: "row",
+    marginTop: 20,
+    gap: 15,
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
 
-  // Estilos para temporizador
+  // Sección de video principal
+  videoPlaceholder: {
+    width: "100%",
+    height: 200,
+    backgroundColor: "#d3d3d3",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  videoText: {
+    fontSize: 18,
+    color: "#555",
+  },
+
+  // Títulos y etiquetas
   labelText: {
     fontSize: 22,
     fontWeight: "bold",
     color: "#000",
     marginBottom: 20,
   },
+
+  // Temporizadores
   timerContainer: {
     backgroundColor: "#f2f2f2",
     padding: 15,
@@ -137,10 +146,6 @@ export default StyleSheet.create({
     fontSize: 24,
     color: "#000",
   },
-  buttonContainer: {
-    flexDirection: "row",
-    marginTop: 20,
-  },
   addButton: {
     backgroundColor: "#4CAF50",
     padding: 15,
@@ -159,5 +164,74 @@ export default StyleSheet.create({
   deleteText: {
     fontSize: 18,
     color: "#FF4444",
+  },
+
+  // Filtros de ejercicios
+  filterButton: {
+    backgroundColor: "#ddd",
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+    marginHorizontal: 5,
+  },
+  filterButtonActive: {
+    backgroundColor: "#007bff",
+  },
+  filterText: {
+    color: "#000",
+    fontWeight: "bold",
+  },
+
+  // Lista de videos
+  videoCard: {
+    backgroundColor: "#f1f1f1",
+    padding: 15,
+    marginBottom: 10,
+    borderRadius: 10,
+  },
+  videoTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  videoCategory: {
+    fontSize: 14,
+    color: "#555",
+  },
+
+  // Caja de zona premium
+  premiumBox: {
+    backgroundColor: "#ffe9b3",
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+  },
+  premiumText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#b8860b",
+  },
+  premiumNote: {
+    fontSize: 14,
+    color: "#555",
+  },
+
+  // Filtros seleccionados guardados
+  selectedFiltersBox: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: 10,
+    marginBottom: 15,
+    justifyContent: "center",
+  },
+  selectedFilterTag: {
+    backgroundColor: "#007bff",
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+    margin: 4,
+  },
+  selectedFilterText: {
+    color: "#fff",
+    fontSize: 14,
   },
 });
