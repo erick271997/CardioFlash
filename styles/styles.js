@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  // Estilos generales
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -8,6 +9,8 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  // Texto de bienvenida
   welcomeText: {
     fontSize: 24,
     fontWeight: "bold",
@@ -20,6 +23,8 @@ export default StyleSheet.create({
     color: "gray",
     marginBottom: 20,
   },
+
+  // Logo en pantalla principal
   header: {
     width: "100%",
     justifyContent: "center",
@@ -60,6 +65,8 @@ export default StyleSheet.create({
       { scale: 1.04 },
     ],
   },
+
+  // Sección de video
   videoPlaceholder: {
     width: "100%",
     height: 200,
@@ -72,17 +79,85 @@ export default StyleSheet.create({
     fontSize: 18,
     color: "#555",
   },
+
+  // Botones
   button: {
     backgroundColor: "#007bff",
-    padding: 15,
-    borderRadius: 10,
+    padding: 16,
+    borderRadius: 60,
     alignItems: "center",
     marginBottom: 10,
-    width: "80%",
+    width: "50%",
   },
   buttonText: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+  },
+
+  // Estilos para temporizador
+  labelText: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#000",
+    marginBottom: 20,
+  },
+  timerContainer: {
+    backgroundColor: "#f2f2f2",
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 10,
+    alignItems: "center",
+    width: "100%",
+  },
+  activeTimer: {
+    borderColor: "#0f0",
+    borderWidth: 2,
+  },
+  timerText: {
+    fontSize: 20,
+    color: "#000",
+  },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  input: {
+    backgroundColor: "#e0e0e0",
+    color: "#000",
+    fontSize: 18,
+    textAlign: "center",
+    width: 50,
+    height: 50,
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
+  separator: {
+    fontSize: 24,
+    color: "#000",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    marginTop: 20,
+  },
+  addButton: {
+    backgroundColor: "#4CAF50",
+    padding: 15,
+    borderRadius: 10,
+    marginVertical: 10,
+  },
+  addText: {
+    color: "#fff",
+    fontSize: 18,
+  },
+  deleteButton: {
+    position: "absolute",
+    left: 10,
+    top: 10,
+  },
+  deleteText: {
+    fontSize: 18,
+    color: "#FF4444",
   },
 });

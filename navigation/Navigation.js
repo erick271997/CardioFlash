@@ -3,9 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { TouchableOpacity, Image, Platform, StatusBar } from "react-native";
 
-// Importar las pantallas
+// Pantallas
 import HomeScreen from "../screens/HomeScreen";
-import TimersScreen from "../screens/TimersScreen"; // 👈 Agregamos la nueva pantalla
+import TimersScreen from "../screens/TimersScreen";
 import BasicStopwatch from "../Componets/BasicStopwatch";
 import BasicTimer from "../Componets/BasicTimer";
 import AdvancedTimer from "../Componets/AdvancedTimer";
@@ -52,13 +52,11 @@ export default function Navigation() {
           })}
         />
 
-        {/* 👇 NUEVA PANTALLA */}
         <Stack.Screen
           name="Timers"
           component={TimersScreen}
           options={{ title: "Timers" }}
         />
-
         <Stack.Screen
           name="BasicStopwatch"
           component={BasicStopwatch}
