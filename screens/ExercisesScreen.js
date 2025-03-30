@@ -1,33 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
-import styles from "../styles/styles";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
+import styles from "../styles/styles"; // Archivo de estilos
 
 const ExercisesScreen = () => {
-  const [age, setAge] = useState("");
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const [filteredVideos, setFilteredVideos] = useState([]);
 
-  const filters = ["Low Mobility", "Overweight", "Fat Burn", "Beginner", "Advanced"];
-
-  const allVideos = [
-    { id: 1, title: "Chair Workout for Seniors", category: "Low Mobility", minAge: 60 },
-    { id: 2, title: "Gentle Fat Burn", category: "Fat Burn", minAge: 30 },
-    { id: 3, title: "Mobility Flow", category: "Low Mobility", minAge: 18 },
-    { id: 4, title: "Overweight Friendly Cardio", category: "Overweight", minAge: 20 },
-    { id: 5, title: "Beginner HIIT", category: "Beginner", minAge: 18 },
-    { id: 6, title: "Fat Burn Blast", category: "Fat Burn", minAge: 18 },
-    { id: 7, title: "Chair Stretching", category: "Low Mobility", minAge: 50 },
+  const filters = [
+    "Fat Burn", "Overweight", "Age 50+", "Age 30 AND 40",
+    "Knee Mobility", "Back Mobility", "Low Mobility",
+    "Beginner", "Advanced", "Cardio", "Strength",
+    "Flexibility", "Balance", "Endurance", "Core Strength",
   ];
 
-  useEffect(() => {
-    const ageNum = parseInt(age);
-    const filtered = allVideos.filter((video) => {
-      const matchesFilter = selectedFilters.length === 0 || selectedFilters.includes(video.category);
-      const matchesAge = !isNaN(ageNum) ? ageNum >= video.minAge : true;
-      return matchesFilter && matchesAge;
-    });
-    setFilteredVideos(filtered);
-  }, [selectedFilters, age]);
+  const videos = [
+    {
+      id: 1,
+      title: "Low Impact Fat Burn",
+      tags: ["Fat Burn", "Cardio", "Beginner"],
+      image: "https://via.placeholder.com/300x180.png?text=Fat+Burn",
+    },
+    {
+      id: 2,
+      title: "Chair Workout for Seniors",
+      tags: ["Age 50+", "Low Mobility", "Balance"],
+      image: "https://via.placeholder.com/300x180.png?text=Senior+Workout",
+    },
+    {
+      id: 3,
+      title: "Core Strength at Home",
+      tags: ["Core Strength", "Advanced", "Strength"],
+      image: "https://via.placeholder.com/300x180.png?text=Core+Strength",
+    },
+    {
+      id: 4,
+      title: "Knee Mobility Stretch",
+      tags: ["Knee Mobility", "Flexibility", "Beginner"],
+      image: "https://via.placeholder.com/300x180.png?text=Knee+Mobility",
+    },
+    {
+      id: 5,
+      title: "Back Mobility Flow",
+      tags: ["Back Mobility", "Flexibility", "Age 30 AND 40"],
+      image: "https://via.placeholder.com/300x180.png?text=Back+Mobility",
+    },
+    {
+      id: 6,
+      title: "Endurance Cardio Blast",
+      tags: ["Endurance", "Cardio", "Advanced"],
+      image: "https://via.placeholder.com/300x180.png?text=Endurance+Cardio",
+    },
+  ];
 
   const toggleFilter = (filter) => {
     setSelectedFilters((prev) =>
@@ -35,68 +57,64 @@ const ExercisesScreen = () => {
     );
   };
 
+  const filteredVideos = videos.filter((video) =>
+    selectedFilters.length === 0 ? true : selectedFilters.some(tag => video.tags.includes(tag))
+  );
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>🎥 CardioFlash Exercises</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.welcomeText}>Welcome to CardioFlash Exercises </Text>
 
-      <Text style={{ fontWeight: "bold", marginBottom: 5 }}>Your Age:</Text>
-      <TextInput
-        placeholder="Enter your age"
-        keyboardType="numeric"
-        maxLength={3}
-        value={age}
-        onChangeText={setAge}
-        style={{
-          borderWidth: 1,
-          borderColor: "#ccc",
-          borderRadius: 10,
-          paddingHorizontal: 10,
-          paddingVertical: 8,
-          width: "50%",
-          marginBottom: 15,
-          textAlign: "center",
-        }}
-      />
+      {/* 📺 Sección de video temporal */}
+      <View style={styles.videoPlaceholder}>
+        <Text style={styles.videoText}>Running video coming soon...</Text>
+      </View>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 10 }}>
-        {filters.map((item) => (
+      <Text style={styles.labelText}>Select your goals:</Text>
+
+      <View style={styles.filterContainer}>
+        {filters.map((filter) => (
           <TouchableOpacity
-            key={item}
-            onPress={() => toggleFilter(item)}
+            key={filter}
+            onPress={() => toggleFilter(filter)}
             style={[
               styles.filterButton,
-              selectedFilters.includes(item) && styles.filterButtonActive
+              selectedFilters.includes(filter) && styles.filterButtonActive,
             ]}
           >
-            <Text style={styles.filterText}>{item}</Text>
+            <Text style={selectedFilters.includes(filter) ? styles.filterTextActive : styles.filterText}>
+              {filter}
+            </Text>
           </TouchableOpacity>
         ))}
-      </ScrollView>
+      </View>
 
-      {selectedFilters.length > 0 || age ? (
-        <View style={{ marginBottom: 10 }}>
-          <Text>🔍 You selected:</Text>
-          {age ? <Text>• Age: {age}</Text> : null}
-          {selectedFilters.map((filter) => (
-            <Text key={filter}>• {filter}</Text>
-          ))}
-        </View>
-      ) : null}
+      <Text style={styles.labelText}>Recommended Videos:</Text>
 
-      <ScrollView style={{ width: "100%" }}>
+      <View style={styles.videoList}>
         {filteredVideos.map((video) => (
-          <View key={video.id} style={styles.videoCard}>
-            <Text style={styles.videoTitle}>{video.title}</Text>
-            <Text style={styles.videoCategory}>{video.category}</Text>
+          <View key={video.id} style={styles.videoItem}>
+            <Image source={{ uri: video.image }} style={styles.videoImage} />
+            <View style={styles.videoInfo}>
+              <Text style={styles.videoTitle}>{video.title}</Text>
+              <Text style={styles.videoTags}>
+                {video.tags.map((tag) => (
+                  <Text
+                    key={tag}
+                    style={{
+                      fontWeight: selectedFilters.includes(tag) ? "bold" : "normal",
+                      color: "#333",
+                    }}
+                  >
+                    {tag}{" "}
+                  </Text>
+                ))}
+              </Text>
+            </View>
           </View>
         ))}
-      </ScrollView>
-
-      <View style={styles.premiumBox}>
-        <Text style={styles.premiumText}>✨ Unlock more videos with Premium! ($5/month)</Text>
-        <Text style={styles.premiumNote}>Free users can access up to 30 videos with ads.</Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
