@@ -1,25 +1,33 @@
-import React from "react";
-import { View, Text, TouchableOpacity, Image, Modal } from "react-native";
-import styles from '../styles/styles'; // Importar los estilos
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, Image } from "react-native";
+import styles from "../styles/styles";
+import ModalMenu from "../Componets/ModalMenu";
 
 const HomeScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      
-      {/* Logo en el encabezado ya está en Navigation.js */}
+  const [modalVisible, setModalVisible] = useState(false);
 
-      {/* Mensaje de bienvenida */}
+  return (
+    
+    <View style={styles.container}>
+      {/* Header con logo y menú */}
+      
+      <View >
+      
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.menuIcon}>
+  
+</TouchableOpacity>
+
+      </View>
+
       <Text style={styles.welcomeText}>Welcome to CardioFlash</Text>
       <Text style={styles.motivationText}>
         "No matter your age, gender, or fitness level – every step counts!"
       </Text>
 
-      {/* Sección de video (fondo gris) */}
       <View style={styles.videoPlaceholder}>
         <Text style={styles.videoText}>Video Coming Soon</Text>
       </View>
 
-      {/* Botones de navegación */}
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Exercises")}>
         <Text style={styles.buttonText}>Go to Exercises</Text>
       </TouchableOpacity>
@@ -28,15 +36,7 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>Go to Timers</Text>
       </TouchableOpacity>
 
-
-      {/* Modal en la parte derecha (aún sin contenido) */}
-      <Modal transparent={true} visible={false}>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text>Modal Content Here</Text>
-          </View>
-        </View>
-      </Modal>
+     
     </View>
   );
 };

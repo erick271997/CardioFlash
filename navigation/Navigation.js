@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { TouchableOpacity, Image, SafeAreaView, View, Platform, StatusBar } from "react-native";
+import { TouchableOpacity, Image, SafeAreaView, View, Text, Platform, StatusBar } from "react-native";
 
 // Importar pantallas
 import HomeScreen from "../screens/HomeScreen";
@@ -9,11 +9,16 @@ import TimersScreen from "../screens/TimersScreen";
 import BasicStopwatch from "../Componets/BasicStopwatch";
 import BasicTimer from "../Componets/BasicTimer";
 import AdvancedTimer from "../Componets/AdvancedTimer";
-import ExercisesScreen from "../screens/ExercisesScreen"; // 👈 Agregamos esta línea
+import ExercisesScreen from "../screens/ExercisesScreen";
+
+// Importa el modal
+import ModalMenu from "../Componets/ModalMenu";
 
 const Stack = createStackNavigator();
 
 export default function Navigation() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -29,11 +34,12 @@ export default function Navigation() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={({ navigation }) => ({
+          options={{
             headerTitle: () => (
               <SafeAreaView>
-                <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-                  <View style={{ marginTop: 10, marginLeft: -10 }}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  {/* Logo */}
+                  <TouchableOpacity>
                     <Image
                       source={require("../Imagen/logo.webp")}
                       style={{
@@ -50,39 +56,33 @@ export default function Navigation() {
                         elevation: 6,
                       }}
                     />
-                  </View>
-                </TouchableOpacity>
+                  </TouchableOpacity>
+
+                  {/* Botón ☰ */}
+                  <TouchableOpacity
+                    onPress={() => setModalVisible(true)}
+                    style={{ marginLeft: 250 }}>
+                    <Text style={{ fontSize: 26 }}>☰</Text>
+                  </TouchableOpacity>
+                </View>
+
+                {/* Modal */}
+                <ModalMenu
+                  visible={modalVisible}
+                  onClose={() => setModalVisible(false)}
+                  isLoggedIn={true}
+                />
               </SafeAreaView>
             ),
             headerLeft: () => null,
-          })}
+          }}
         />
 
-        <Stack.Screen
-          name="Exercises"
-          component={ExercisesScreen} // 👈 Aquí se conecta
-          options={{ title: "Exercises" }}
-        />
-        <Stack.Screen
-          name="Timers"
-          component={TimersScreen}
-          options={{ title: "Timers" }}
-        />
-        <Stack.Screen
-          name="BasicStopwatch"
-          component={BasicStopwatch}
-          options={{ title: "Basic Stopwatch" }}
-        />
-        <Stack.Screen
-          name="BasicTimer"
-          component={BasicTimer}
-          options={{ title: "Basic Timer" }}
-        />
-        <Stack.Screen
-          name="AdvancedTimer"
-          component={AdvancedTimer}
-          options={{ title: "Advanced Timer" }}
-        />
+        <Stack.Screen name="Exercises" component={ExercisesScreen} options={{ title: "Exercises" }} />
+        <Stack.Screen name="Timers" component={TimersScreen} options={{ title: "Timers" }} />
+        <Stack.Screen name="BasicStopwatch" component={BasicStopwatch} options={{ title: "Basic Stopwatch" }} />
+        <Stack.Screen name="BasicTimer" component={BasicTimer} options={{ title: "Basic Timer" }} />
+        <Stack.Screen name="AdvancedTimer" component={AdvancedTimer} options={{ title: "Advanced Timer" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

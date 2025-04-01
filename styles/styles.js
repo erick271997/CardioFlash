@@ -63,6 +63,58 @@ export default StyleSheet.create({
     ],
   },
 
+  
+//modal
+
+
+modalOverlay: {
+
+  flex: 1,
+  justifyContent: "flex-start",
+  alignItems: "flex-end",
+  padding: 20,
+  backgroundColor: "rgba(143, 134, 134, 0.03)", // opcional: para oscurecer fondo
+},
+modalBox: {
+ 
+  backgroundColor: "#fff",
+  borderRadius: 10,
+  padding: 10,
+  width: 200,
+  position: "absolute",
+  top: 20,        // Lo bajamos un poco menos para que quede en línea con el logo
+  right: 50,      // Más a la derecha aún
+  zIndex: 9999,   // Asegura que esté por encima de otros elementos
+  elevation: 10,  // Sombra para Android
+  shadowColor: "#000",  // Sombra para iOS
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.3,
+  shadowRadius: 4,
+},
+
+modalTitle: {
+
+  fontSize: 25,//menu
+  fontWeight: "bold",
+  marginBottom: 10,
+
+},
+modalOption: {
+ 
+  paddingVertical: 10,
+},
+modalOptionText: {
+  
+  fontSize: 16,
+  color: "#333",
+},
+modalCloseText: {
+  marginTop: 15,
+  textAlign: "center",
+  color: "#007bff",
+  fontWeight: "bold",
+},
+
   videoPlaceholder: {
     width: "100%",
     height: 200,
