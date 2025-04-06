@@ -122,10 +122,22 @@ const AdvancedTimer = () => {
               <Text style={styles.deleteText}>❌</Text>
             </TouchableOpacity>
 
-            <Text style={styles.timerText}>Timer {index + 1}</Text>
+            <TextInput
+              style={styles.timerNameInput}
+              placeholder={`NameTimer ${index + 1}`}
+              value={timer.name || ""}
+              onChangeText={(val) =>
+                setTimers((prev) =>
+                  prev.map((t) =>
+                    t.id === timer.id ? { ...t, name: val } : t
+                  )
+                )
+              }
+            />
+
             <View style={styles.inputRow}>
               <TextInput
-                style={styles.input}
+                style={styles.advancedInput}
                 keyboardType="numeric"
                 maxLength={2}
                 value={timer.hours.toString()}
@@ -133,7 +145,7 @@ const AdvancedTimer = () => {
               />
               <Text style={styles.separator}>:</Text>
               <TextInput
-                style={styles.input}
+                style={styles.advancedInput}
                 keyboardType="numeric"
                 maxLength={2}
                 value={timer.minutes.toString()}
@@ -141,7 +153,7 @@ const AdvancedTimer = () => {
               />
               <Text style={styles.separator}>:</Text>
               <TextInput
-                style={styles.input}
+                style={styles.advancedInput}
                 keyboardType="numeric"
                 maxLength={2}
                 value={timer.seconds.toString()}

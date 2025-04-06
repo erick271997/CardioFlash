@@ -166,7 +166,6 @@ modalCloseText: {
   },
   inputRow: {
     flexDirection: "row",
-
     alignItems: "center",
     marginTop: 10,
   },
@@ -180,6 +179,44 @@ modalCloseText: {
     borderRadius: 5,
     marginHorizontal: 5,
   },
+  //BasicTimer
+  timerInput: {
+    backgroundColor: "#e0e0e0",
+    color: "#000",
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    width: 60,
+    height: 60,
+    borderRadius: 12,
+    marginHorizontal: 8,
+    borderWidth: 1,
+    borderColor: "#ccc",
+  },
+//advancedTimer
+  advancedInput: {
+    backgroundColor: "#f0f0f0",
+    color: "#000",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    width: 50,
+    height: 50,
+    borderRadius: 10,
+    marginHorizontal: 6,
+    borderWidth: 1,
+    borderColor: "#aaa",
+  },
+  timerNameInput: {
+    fontWeight: "bold",
+    color: "black",
+    fontSize: 20,
+    textAlign: "center",
+    width: "100%",
+    height: 50,
+  },
+  
+  
   separator: {
     fontSize: 24,
     color: "#000",
@@ -499,7 +536,74 @@ forgotText: {
   fontWeight: "bold",
   textAlign: "center",
   marginTop: 10,
-}
+},
+
+//chatAi
+aiChatContainer: {
+  position: "absolute",
+  bottom: 0,
+  width: "100%",
+  backgroundColor: "#fff",
+  borderTopWidth: 1,
+  borderColor: "#ccc",
+  paddingBottom: 10,
+  paddingHorizontal: 10,
+},
+
+aiChatBox: {
+  maxHeight: 180,
+  paddingVertical: 5,
+},
+
+aiBubbleUser: {
+  alignSelf: "flex-end",
+  backgroundColor: "#007bff",
+  padding: 10,
+  borderRadius: 10,
+  marginBottom: 5,
+  maxWidth: "80%",
+},
+
+aiBubbleAI: {
+  alignSelf: "flex-start",
+  backgroundColor: "#e0e0e0",
+  padding: 10,
+  borderRadius: 10,
+  marginBottom: 5,
+  maxWidth: "80%",
+},
+
+aiText: {
+  color: "#000",
+},
+
+aiInputRow: {
+  flexDirection: "row",
+  alignItems: "center",
+  marginTop: 10,
+},
+
+aiInput: {
+  flex: 1,
+  backgroundColor: "#f0f0f0",
+  padding: 10,
+  borderRadius: 10,
+  fontSize: 16,
+  marginRight: 10,
+},
+
+aiSendButton: {
+  backgroundColor: "#007bff",
+  padding: 10,
+  borderRadius: 10,
+},
+
+aiSendText: {
+  color: "#fff",
+  fontWeight: "bold",
+},
+
+
 
 });
 

@@ -9,7 +9,6 @@ const BasicTimer = () => {
   const [timeLeft, setTimeLeft] = useState(null);
   const [running, setRunning] = useState(false);
 
-  // ciar el temporizador
   const startTimer = () => {
     const totalSeconds =
       parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds);
@@ -19,12 +18,10 @@ const BasicTimer = () => {
     }
   };
 
-  // Detener el temporizador
   const stopTimer = () => {
     setRunning(false);
   };
 
-  // Reciar el temporizador
   const resetTimer = () => {
     setRunning(false);
     setTimeLeft(null);
@@ -33,7 +30,6 @@ const BasicTimer = () => {
     setSeconds("00");
   };
 
-  // Cuenta regresiva
   useEffect(() => {
     if (timeLeft === 0) {
       setRunning(false);
@@ -43,7 +39,6 @@ const BasicTimer = () => {
     }
   }, [timeLeft, running]);
 
-  // Mostrar el tiempo formateado
   const formatTime = () => {
     const h = String(Math.floor(timeLeft / 3600)).padStart(2, "0");
     const m = String(Math.floor((timeLeft % 3600) / 60)).padStart(2, "0");
@@ -55,11 +50,10 @@ const BasicTimer = () => {
     <View style={styles.container}>
       <Text style={styles.labelText}>⏱️ Basic Timer</Text>
 
-      {/* Entradas de tiempo */}
       {!running ? (
         <View style={styles.inputRow}>
           <TextInput
-            style={styles.input}
+            style={styles.timerInput}
             keyboardType="numeric"
             maxLength={2}
             value={hours}
@@ -68,7 +62,7 @@ const BasicTimer = () => {
           />
           <Text style={styles.separator}>:</Text>
           <TextInput
-            style={styles.input}
+            style={styles.timerInput}
             keyboardType="numeric"
             maxLength={2}
             value={minutes}
@@ -77,7 +71,7 @@ const BasicTimer = () => {
           />
           <Text style={styles.separator}>:</Text>
           <TextInput
-            style={styles.input}
+            style={styles.timerInput}
             keyboardType="numeric"
             maxLength={2}
             value={seconds}
@@ -89,7 +83,6 @@ const BasicTimer = () => {
         <Text style={styles.timerText}>{formatTime()}</Text>
       )}
 
-      {/* Botones */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={running ? stopTimer : startTimer}>
           <Text style={styles.buttonText}>{running ? " Pause" : " Start"}</Text>
