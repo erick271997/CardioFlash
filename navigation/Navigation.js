@@ -10,6 +10,9 @@ import BasicStopwatch from "../Componets/BasicStopwatch";
 import BasicTimer from "../Componets/BasicTimer";
 import AdvancedTimer from "../Componets/AdvancedTimer";
 import ExercisesScreen from "../screens/ExercisesScreen";
+import LoginScreen from "../screens/LoginScreen";
+import RegisterScreen from "../screens/RegisterScreen"; 
+
 
 // Importa el modal
 import ModalMenu from "../Componets/ModalMenu";
@@ -34,7 +37,7 @@ export default function Navigation() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{
+          options={({ navigation }) => ({
             headerTitle: () => (
               <SafeAreaView>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -57,7 +60,7 @@ export default function Navigation() {
                       }}
                     />
                   </TouchableOpacity>
-
+          
                   {/* Botón ☰ */}
                   <TouchableOpacity
                     onPress={() => setModalVisible(true)}
@@ -65,24 +68,28 @@ export default function Navigation() {
                     <Text style={{ fontSize: 26 }}>☰</Text>
                   </TouchableOpacity>
                 </View>
-
-                {/* Modal */}
+          
+             
                 <ModalMenu
                   visible={modalVisible}
                   onClose={() => setModalVisible(false)}
                   isLoggedIn={true}
+                  navigation={navigation} 
                 />
               </SafeAreaView>
             ),
             headerLeft: () => null,
-          }}
-        />
+          })}
+        />          
 
         <Stack.Screen name="Exercises" component={ExercisesScreen} options={{ title: "Exercises" }} />
         <Stack.Screen name="Timers" component={TimersScreen} options={{ title: "Timers" }} />
         <Stack.Screen name="BasicStopwatch" component={BasicStopwatch} options={{ title: "Basic Stopwatch" }} />
         <Stack.Screen name="BasicTimer" component={BasicTimer} options={{ title: "Basic Timer" }} />
         <Stack.Screen name="AdvancedTimer" component={AdvancedTimer} options={{ title: "Advanced Timer" }} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ title: "Login" }} />
+        <Stack.Screen name="Register" component={RegisterScreen} options={{ title: "Create Account" }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

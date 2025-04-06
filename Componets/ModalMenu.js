@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Modal,
   View,
@@ -6,12 +6,16 @@ import {
   TouchableOpacity,
 } from "react-native";
 import styles from "../styles/styles";
+import AuthContext from "../context/AuthContext"; 
 
-const ModalMenu = ({ visible, onClose, isLoggedIn }) => {
+const ModalMenu = ({ visible, onClose, navigation }) => {
+
+  const { isLoggedIn, logout } = useContext(AuthContext); 
+
   return (
     <Modal transparent={true} visible={visible} animationType="slide">
       <View style={styles.modalOverlay}>
-        <View style={[styles.modalBox, { right: 10 }]}> {/* << AJUSTE AQUÍ */}
+        <View style={[styles.modalBox, { right: 10 }]}>
           <TouchableOpacity onPress={onClose} style={styles.modalCloseButton}></TouchableOpacity>
           <Text style={styles.modalTitle}>Menu</Text>
 
@@ -20,9 +24,16 @@ const ModalMenu = ({ visible, onClose, isLoggedIn }) => {
               <Text style={styles.modalOptionText}>👤 Profile</Text>
             </TouchableOpacity>
           ) : (
-            <TouchableOpacity style={styles.modalOption}>
-              <Text style={styles.modalOptionText}>🔐 Log In / Sign Up</Text>
-            </TouchableOpacity>
+            <TouchableOpacity
+            style={styles.modalOption}
+            onPress={() => {
+              onClose(); // Cierra el modal
+              navigation.navigate("Login"); 
+            }}
+          >
+            <Text style={styles.modalOptionText}>🔐 Log In / Sign Up</Text>
+          </TouchableOpacity>
+          
           )}
 
           <TouchableOpacity style={styles.modalOption}>
@@ -39,7 +50,7 @@ const ModalMenu = ({ visible, onClose, isLoggedIn }) => {
           </TouchableOpacity>
 
           {isLoggedIn && (
-            <TouchableOpacity style={styles.modalOption}>
+            <TouchableOpacity style={styles.modalOption} onPress={logout}>
               <Text style={[styles.modalOptionText, { color: "#ff4444" }]}>
                 🚪 Log Out
               </Text>

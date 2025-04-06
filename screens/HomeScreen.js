@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "../styles/styles";
-import ModalMenu from "../Componets/ModalMenu";
 
 const HomeScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   return (
     
@@ -36,7 +37,12 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>Go to Timers</Text>
       </TouchableOpacity>
 
-     
+      {!isLoggedIn && (
+  <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+  <Text style={styles.loginText}>🔐 Create Account / Login</Text>
+</TouchableOpacity>
+)}
+
     </View>
   );
 };

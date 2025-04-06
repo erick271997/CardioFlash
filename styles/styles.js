@@ -340,4 +340,168 @@ videoTags: {
     fontSize: 14,
     color: "#555",
   },
+  
+  // Estilo para la sección de perfil
+
+
+userProfileContainer: {
+  flex: 1,
+  padding: 20,
+  backgroundColor: "#fff",
+},
+
+title: {
+  fontSize: 26,
+  fontWeight: "bold",
+  marginBottom: 20,
+  textAlign: "center",
+  color: "#007bff",
+},
+
+infoBox: {
+  backgroundColor: "#f2f2f2",
+  padding: 15,
+  borderRadius: 10,
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.1,
+  shadowRadius: 4,
+  elevation: 2,
+},
+
+label: {
+  fontSize: 16,
+  fontWeight: "bold",
+  color: "#333",
+  marginTop: 10,
+},
+
+value: {
+  fontSize: 16,
+  color: "#666",
+},
+
+
+loginText: {
+  color: "black",
+  fontSize: 18,
+  fontWeight: "bold",
+},
+
+// 🔒 Login Styles
+loginContainer: {
+  flex: 1,
+  backgroundColor: "#fff",
+  justifyContent: "center",
+  alignItems: "center",
+  paddingHorizontal: 20,
+},
+
+loginBox: {
+  width: "100%",
+  maxWidth: 400,
+  backgroundColor: "#f9f9f9",
+  padding: 20,
+  borderRadius: 10,
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+  elevation: 4,
+},
+
+loginTitle: {
+  fontSize: 24,
+  fontWeight: "bold",
+  marginBottom: 20,
+  textAlign: "center",
+  color: "#007bff",
+},
+
+input: {
+  backgroundColor: "#e0e0e0",
+  padding: 12,
+  borderRadius: 8,
+  fontSize: 16,
+  marginBottom: 15,
+  color: "#000",
+  width: "100%",
+},
+
+loginButton: {
+  backgroundColor: "#007bff",
+  padding: 14,
+  borderRadius: 8,
+  alignItems: "center",
+  marginBottom: 10,
+},
+
+loginButtonText: {
+  color: "#fff",
+  fontSize: 16,
+  fontWeight: "bold",
+},
+
+createAccountText: {
+  marginTop: 10,
+  fontSize: 14,
+  color: "#007bff",
+  textAlign: "center",
+  textDecorationLine: "underline",
+},
+
+// Estilos para Login y Registro
+authContainer: {
+  flexGrow: 1,
+  justifyContent: "center",
+  alignItems: "center",
+  padding: 20,
+  backgroundColor: "#fff",
+},
+authTitle: {
+  fontSize: 26,
+  fontWeight: "bold",
+  marginBottom: 20,
+  textAlign: "center",
+},
+input: {
+  width: "100%",
+  backgroundColor: "#f0f0f0",
+  borderRadius: 10,
+  paddingHorizontal: 15,
+  paddingVertical: 12,
+  fontSize: 16,
+  marginBottom: 15,
+  borderWidth: 1,
+  borderColor: "#ccc",
+},
+authButton: {
+  backgroundColor: "#007bff",
+  paddingVertical: 14,
+  borderRadius: 10,
+  width: "100%",
+  alignItems: "center",
+  marginBottom: 20,
+},
+authButtonText: {
+  color: "#fff",
+  fontSize: 18,
+  fontWeight: "bold",
+},
+loginText: {
+  fontSize: 14,
+  color: "#007bff",
+  textAlign: "center",
+},
+
+forgotText: {
+  color: "#007bff",
+  fontWeight: "bold",
+  textAlign: "center",
+  marginTop: 10,
+}
+
 });
+
+
+
